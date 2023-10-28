@@ -1,0 +1,72 @@
+#!/usr/bin/python3
+import sys
+import os
+import re
+from pathlib import Path
+
+# comments_found = [
+# 	{
+# 		file: "file",
+# 		found: 
+#		[
+#			{
+# 				"line_number": line_number + 1,
+# 				"line_content": matches
+# 			},
+#			{
+# 				"line_number": line_number + 1,
+# 				"line_content": matches
+# 			}
+#		]
+# 	}
+# ]
+
+results = []
+
+def main():
+	files_to_comb = sys.argv[1:]
+
+	if not files_to_comb:
+		print("No arguments were passed.")
+		sys.exit()
+	
+	# Loop through all files
+	for file in files_to_comb:
+		if Path(file).exists():
+			file_info = { "file": file, "found": [] }
+
+			file_content = open(file, "r")
+			
+			# Look through file line by line and find comments
+			for line_number, line_content in enumerate(file_content):
+				matches = re.findall("<!--(.*?)-->", line_content)
+				
+				if matches:
+					file_info["found"].append({
+						"line_number": line_number + 1,
+						"line_content": matches
+					})
+
+			results.append(file_info)
+
+			
+	show_formatted_results(results)
+
+# NEEDS TO BE OPTIMISED
+def show_formatted_results(results):
+    for result in results:
+        print("+-----------------------------------+")
+        print(f"FILENAME: {result['file']}")
+        print("COMMENTS:")
+
+        for line in result["found"]:
+            print(f"LINE: {line['line_number']}")
+
+            for comment in line["line_content"]:
+                print(f" <!--{comment}-->", end="")
+
+            print()
+        print("+-----------------------------------+\n\n")
+            
+
+main()
