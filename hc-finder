@@ -4,23 +4,6 @@ import os
 import re
 from pathlib import Path
 
-# comments_found = [
-# 	{
-# 		file: "file",
-# 		found: 
-#		[
-#			{
-# 				"line_number": line_number + 1,
-# 				"line_content": matches
-# 			},
-#			{
-# 				"line_number": line_number + 1,
-# 				"line_content": matches
-# 			}
-#		]
-# 	}
-# ]
-
 results = []
 
 def main():
