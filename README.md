@@ -5,7 +5,7 @@ html-comment-finder is a CLI tool to find comments in html files.
 ### Usage:
 
 ```
- hc-finder [file/s] # Will print list of file with all comments in those files.
+ hc-finder [file/s] # Will print list of files with all comments.
 ```
 
 ### Installation:
@@ -13,7 +13,7 @@ html-comment-finder is a CLI tool to find comments in html files.
 Clone the repo and move into it
 
 ```
-git clone https://github.com/JamieBurridge/html-comment-finder.git && cd binit
+git clone https://github.com/JamieBurridge/html-comment-finder.git && cd html-comment-finder
 ```
 
 Run the install script
